@@ -166,4 +166,5 @@ if __name__=="__main__":
     count_entity_attr_values(KB_path)
     mention2ent_path=os.path.join('./','pkubase-mention2ent.txt')
     # count_mention(mention2ent_path)
+
     pass
