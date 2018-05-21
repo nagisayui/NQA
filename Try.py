@@ -83,6 +83,9 @@ def count_entity_attr_values(KB_path):
     print("The number of value is %s" %(len(values)))
     print("The number of triple is %s" %(i))
 
+    data2pickle("pkubase.entity", list(entities))
+    data2pickle("pkubase.attributes", list(attributes))
+
     mention2ent_path = os.path.join('./', 'pkubase-mention2ent.txt')
     with open(mention2ent_path, 'r', encoding='utf-8') as men_fr:
         total_number = 0
@@ -118,10 +121,14 @@ def count_entity_attr_values(KB_path):
             if (m in entities):
                 t2 += 1
 
+        data2pickle("mention.mentions", list(mentions))
+        data2pickle("mention.mention2ents", list(men_entities))
+        data2pickle("mention.men_attrs", list(men_attrs))
 
         print("The number is %s %s %s" % (count_list[0],count_list[1],count_list[2]))
         print("The number of mention is %s,same in entities is %s" % (len(mentions),t1))
         print("The number of men_entities is %s,same in entities is %s" % (len(men_entities),t2))
+        print("The number of men_attrs is %s" % (len(men_attrs)))
         print("The same is %s" % (same))
         print("The total number is %s" % (total_number))
         # print("The percentage is %s" % (total_number / len(mentions)))
@@ -136,6 +143,7 @@ def count_entity_attr_values(KB_path):
         s3="The number is 8926693 127551 0" \
            "The number of mention is 13021683,same in entities is 8807603" \
            "The number of men_entities is 11554256,same in entities is 9423855" \
+           "The number of men_attrs is 66774" \
            "The total number is 13928550"
 
 
@@ -152,7 +160,6 @@ def count_mention(mention2ent_path):
                 print(total_number)
         print("The number of mention is %s" % (len(mentions)))
         print("The percentage is %s" % (total_number/len(mentions)))
-
 
 
 if __name__=="__main__":
